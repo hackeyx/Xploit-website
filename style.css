@@ -1,0 +1,260 @@
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
+
+html {
+  min-height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #000000;
+  background-image: radial-gradient(#11581E, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Inconsolata', Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow:
+      0 0 1ex rgba(51, 255, 51, 1),
+      0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.noise {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  opacity: .02;
+}
+
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+      repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0) 100%);
+  background-size: auto 4px;
+  z-index: 1;
+}
+
+.overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      0deg,
+      transparent 0%,
+      rgba(32, 128, 32, 0.2) 2%,
+      rgba(32, 128, 32, 0.8) 3%,
+      rgba(32, 128, 32, 0.2) 3%,
+      transparent 100%);
+  background-repeat: no-repeat;
+  animation: scan 7.5s linear 0s infinite;
+}
+
+@keyframes scan {
+  0%        { background-position: 0 -100vh; }
+  35%, 100% { background-position: 0 100vh; }
+}
+
+.terminal {
+  box-sizing: inherit;
+  position: absolute;
+  height: 100%;
+  width: 1000px;
+  max-width: 100%;
+  padding: 4rem;
+  text-transform: uppercase;
+}
+
+.output {
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow:
+      0 0 1px rgba(51, 255, 51, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.output::before {
+  content: "> ";
+}
+
+/*
+.input {
+  color: rgba(192, 255, 192, 0.8);
+  text-shadow:
+      0 0 1px rgba(51, 255, 51, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.input::before {
+  content: "$ ";
+}
+*/
+
+a {
+  color: #fff;
+  text-decoration: none;
+  position:sticky;
+}
+
+a::before {
+  content: "[";
+}
+
+a::after {
+  content: "]";
+}
+ul{
+  list-style-type:none;
+  padding:0px;
+  margin:0px;
+  overflow:hidden;
+  margin:20px;
+  background-color:green;
+
+}
+li a{
+  float:left;
+  display:block;
+  color:white;
+  padding:10px 15px;
+  text-align:center;
+  text-decoration:none;
+  border-right:1px solid black;
+  min-width:60px;
+}
+li a:hover{
+  background-color:#000000;
+  animation:glow;
+  animation-duration:10s;
+}
+@keyframes glow{
+  50%{color:black}
+  100%{color:green}
+}
+
+.cursor {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 0.6em;
+    height: 1em;
+    background-color: #fff;
+    animation: blink 1s infinite;
+}
+  
+.cursor-stale {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 0.6em;
+    height: 1em;
+    background-color: #fff;
+  }
+
+.head1{
+    font-size: 9vmin;
+    font-weight: 700;
+    position:static;
+    color:white;
+    top:0;
+    left:0;
+    padding:10px;
+    font-size:30px;
+
+}
+
+@keyframes typing {
+    0.0000%, 27.3488% { content: ""; }
+    1.1395%, 26.2093% { content: "D"; }
+    2.2791%, 25.0698% { content: "De"; }
+    3.4186%, 23.9302% { content: "Des"; }
+    4.5581%, 22.7907% { content: "Dest"; }
+    5.6977%, 21.6512% { content: "Destr"; }
+    6.8372%, 20.5116% { content: "Destro"; }
+    7.9767%, 19.3721% { content: "Destroy"; }
+    9.1163%, 18.2326% { content: "Destroy."; }
+    10.2558%, 17.0930% { content: "Destroy.."; }
+    11.3953%, 15.9535% { content: "Destroy..."; }
+    12.5348%, 14.8140% { content: "Destroy..."; }
+  
+    33.0464%, 56.9764% { content: ""; }
+    34.1859%, 55.8369% { content: "H"; }
+    35.3254%, 54.6974% { content: "Ha"; }
+    36.4649%, 53.5579% { content: "Hac"; }
+    37.6044%, 52.4184% { content: "Hack"; }
+    38.7439%, 51.2789% { content: "Hack."; }
+    39.8834%, 50.1394% { content: "Hack.."; }
+    41.0229%, 48.9999% { content: "Hack..."; }
+    42.1624%, 47.8604% { content: "Hack..."; }
+  
+    75.2093%, 99.1393% { content: ""; }
+    76.3488%, 97.9998% { content: "A"; }
+    77.4883%, 96.8603% { content: "Att"; }
+    78.6278%, 95.7208% { content: "Atta"; }
+    79.7673%, 94.5813% { content: "Attac"; }
+    80.9068%, 93.4418% { content: "Attack"; }
+    82.0463%, 92.3023% { content: "Attack."; }
+    83.1858%, 91.1628% { content: "Attack.."; }
+    84.3253%, 90.0233% { content: "Attack..."; }
+  
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .typewriter {
+    --caret: currentcolor;
+    position:absolute;
+  }
+  
+  .typewriter::before {
+    content: "";
+    animation: typing 13.5s infinite;
+    position:absolute;
+
+  }
+  
+  .typewriter::after {
+    content: "";
+    border-right: 1px solid var(--caret);
+    animation: blink 0.5s linear infinite;
+    position:absolute;
+
+  }
+  
+  
+  @media (prefers-reduced-motion) {
+    .typewriter::after {
+      animation: none;
+    }
+    
+    @keyframes sequencePopup {
+      0%, 100% { content: "Destroy..."; }
+      35% { content: "Hack..."; }
+      80% { content: "Attack..."; }
+    }
+  
+    .typewriter::before {
+      content: "Destroy...";
+      animation: sequencePopup 12s linear infinite;
+      position:absolute;
+
+    }
+  }
